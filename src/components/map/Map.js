@@ -10,7 +10,7 @@ export default class Map extends Component {
       height: '100vh',
       latitude: 47.605514,
       longitude: -121.668538,
-      zoom: 8,
+      zoom: 5,
     },
   };
 
@@ -23,7 +23,7 @@ export default class Map extends Component {
         }
         onViewportChange={viewport => this.setState({ viewport })}>
         <ul>
-          <Lakes />
+          <Lakes zoom={this.state.zoom} />
         </ul>
       </ReactMapGL>
     );
