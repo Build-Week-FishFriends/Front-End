@@ -3,6 +3,7 @@ import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import axiosWithAuth from './WithAuth';
+import './Signup.css';
 
 const BasicSignupForm = ({ values, errors, touched, status }) => {
   const [peopleInfo, setInfo] = useState([]);
@@ -12,26 +13,28 @@ const BasicSignupForm = ({ values, errors, touched, status }) => {
     }
   }, [status]);
   return (
-    <div>
-      <Form className='Form'>
-        <Field value={values.firstName} className='Fields' type='text' name='firstName' placeholder='First Name' />
-        {touched.firstname && errors.firstname && <p>{errors.firstname}</p>}
-        <Field value={values.lastName} className='Fields' type='text' name='lastName' placeholder='Last Name' />
-        {touched.lastname && errors.lastname && <p>{errors.lastname}</p>}
-        <Field value={values.username} className='Fields' type='text' name='username' placeholder='Username' />
-        {touched.username && errors.username && <p>{errors.username}</p>}
-        <Field value={values.email} className='Fields' type='text' name='email' placeholder='Email' />
-        {touched.email && errors.email && <p>{errors.email}</p>}
-        <Field value={values.pass} className='Fields' type='text' name='pass' placeholder='Password' />
-        {touched.pass && errors.pass && <p>{errors.pass}</p>}
-        <Field value={values.passconf} className='Fields' type='text' name='passconf' placeholder='Confirm Password' />
-        {touched.passconf && errors.passconf && <p>{errors.passconf}</p>}
-        <div>
-          <button type='submit' value='Submit'>
-            Submit
-          </button>
-        </div>
-      </Form>
+    <div className='background'>
+      <div className='FormContainer'>
+        <Form className='Form'>
+          <Field value={values.firstName} className='Fields' type='text' name='firstName' placeholder='First Name' />
+          {touched.firstname && errors.firstname && <p>{errors.firstname}</p>}
+          <Field value={values.lastName} className='Fields' type='text' name='lastName' placeholder='Last Name' />
+          {touched.lastname && errors.lastname && <p>{errors.lastname}</p>}
+          <Field value={values.username} className='Fields' type='text' name='username' placeholder='Username' />
+          {touched.username && errors.username && <p>{errors.username}</p>}
+          <Field value={values.email} className='Fields' type='text' name='email' placeholder='Email' />
+          {touched.email && errors.email && <p>{errors.email}</p>}
+          <Field value={values.pass} className='Fields' type='text' name='pass' placeholder='Password' />
+          {touched.pass && errors.pass && <p>{errors.pass}</p>}
+          <Field value={values.passconf} className='Fields' type='text' name='passconf' placeholder='Confirm Password' />
+          {touched.passconf && errors.passconf && <p>{errors.passconf}</p>}
+          <div>
+            <button type='submit' value='Submit'>
+              Submit
+            </button>
+          </div>
+        </Form>
+      </div>
     </div>
   );
 };
@@ -65,8 +68,8 @@ const SignupForm = withFormik({
   handleSubmit(values, { setStatus }) {
     const { firstName, lastName, username, email, pass } = values;
     const postValues = { firstName, lastName, username, email, password: pass };
-    axios
-      .post('https://fish-friends.herokuapp.com/auth/register', postValues)
+    axiosWithAuth
+      .post('/auth/signup', postValues)
       .then(response => {
         console.log(response.data);
         setStatus(response.data);

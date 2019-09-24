@@ -1,6 +1,6 @@
 import React from 'react';
-import LoginForm from './Login';
-import SignupForm from './Signup';
+import LoginForm from './components/auth/Login';
+import SignupForm from './components/auth/Signup';
 import { Switch, Route } from 'react-router-dom';
 import Map from './components/map/Map';
 
