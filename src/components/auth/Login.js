@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
 import axiosWithAuth from './WithAuth';
 
-const BasicLoginForm = ({ values, errors, touched, status }) => {
-  const [peopleInfo, setInfo] = useState([]);
+const BasicLoginForm = ({ values, errors, touched, status, history, handleUserObject }) => {
   useEffect(() => {
-    if (status) {
-      setInfo([...peopleInfo, status]);
-    }
-  }, [status]);
+    status && handleUserObject(status.userObject);
+    status && history.push('/');
+  });
   return (
     <div className='background'>
       <div className='FormContainer'>
@@ -53,6 +50,7 @@ const LoginForm = withFormik({
         console.log(response);
         setStatus(response.data);
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data.userObject));
       })
       .catch(error => console.log('Error'));
   },

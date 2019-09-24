@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
 import axiosWithAuth from './WithAuth';
 import './Signup.css';
 
-const BasicSignupForm = ({ values, errors, touched, status }) => {
-  const [peopleInfo, setInfo] = useState([]);
+const BasicSignupForm = ({ values, errors, touched, status, history, handleUserObject }) => {
   useEffect(() => {
-    if (status) {
-      setInfo([...peopleInfo, status]);
-    }
-  }, [status]);
+    status && handleUserObject(status.userObject);
+    status && history.push('/');
+  });
   return (
     <div className='background'>
       <div className='FormContainer'>
@@ -76,11 +73,12 @@ const SignupForm = withFormik({
     const postValues = { firstName, lastName, username, email, password: pass };
 
     axiosWithAuth()
-      .post('/auth/signup', postValues)
+      .post('/auth/register', postValues)
       .then(response => {
         console.log(response.data);
         setStatus(response.data);
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data.userObject));
       })
       .catch(error => console.log('Error'));
   },
