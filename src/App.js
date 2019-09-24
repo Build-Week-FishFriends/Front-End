@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import LoginForm from './components/auth/Login';
 import SignupForm from './components/auth/Signup';
 import { Switch, Route } from 'react-router-dom';
+import LakesCard from './components/LakesCard';
 import Map from './components/map/Map';
 import UserProfile from './components/user/userProfile';
 import PrivateRoute from './privateRoute';
 import NavBar from './components/layout/navBar';
+
+import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
 function App() {
   const [user, setUser] = useState({});
@@ -22,7 +25,8 @@ function App() {
         <Route path='/signup' render={props => <SignupForm {...props} handleUserObject={handleUserObject} />} />
         <PrivateRoute path='/:username' component={UserProfile} />
       </Switch>
-    </>
+     </>
+    
   );
 }
 

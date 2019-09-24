@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactMapGL from 'react-map-gl';
 import Lakes from './Lakes';
-import 'mapbox-gl/dist/mapbox-gl.css';
+
 
 export default class Map extends Component {
   state = {
