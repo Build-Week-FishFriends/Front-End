@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
 import axiosWithAuth from './WithAuth';
 import './Signup.css';
 
-const BasicSignupForm = ({ values, errors, touched, status }) => {
-  const [peopleInfo, setInfo] = useState([]);
+const BasicSignupForm = ({ values, errors, touched, status, history, handleUserObject }) => {
   useEffect(() => {
-    if (status) {
-      setInfo([...peopleInfo, status]);
-    }
-  }, [status]);
+    status && handleUserObject(status.userObject);
+    status && history.push('/');
+  });
   return (
     <div className='background'>
       <div className='FormContainer'>
@@ -26,7 +23,13 @@ const BasicSignupForm = ({ values, errors, touched, status }) => {
           {touched.email && errors.email && <p>{errors.email}</p>}
           <Field value={values.pass} className='Fields' type='text' name='pass' placeholder='Password' />
           {touched.pass && errors.pass && <p>{errors.pass}</p>}
-          <Field value={values.passconf} className='Fields' type='text' name='passconf' placeholder='Confirm Password' />
+          <Field
+            value={values.passconf}
+            className='Fields'
+            type='text'
+            name='passconf'
+            placeholder='Confirm Password'
+          />
           {touched.passconf && errors.passconf && <p>{errors.passconf}</p>}
           <div>
             <button type='submit' value='Submit'>
@@ -68,12 +71,14 @@ const SignupForm = withFormik({
   handleSubmit(values, { setStatus }) {
     const { firstName, lastName, username, email, pass } = values;
     const postValues = { firstName, lastName, username, email, password: pass };
-    axiosWithAuth
-      .post('/auth/signup', postValues)
+
+    axiosWithAuth()
+      .post('/auth/register', postValues)
       .then(response => {
         console.log(response.data);
         setStatus(response.data);
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data.userObject));
       })
       .catch(error => console.log('Error'));
   },
