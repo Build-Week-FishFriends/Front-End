@@ -8,10 +8,7 @@ import PrivateRoute from './privateRoute';
 import NavBar from './components/layout/navBar';
 
 function App() {
-  const [user, setUser] = useState({
-    isLoggedIn: true,
-    userName: 'losephjambert',
-  });
+  const [user, setUser] = useState({});
   return (
     <>
       <NavBar user={user} />

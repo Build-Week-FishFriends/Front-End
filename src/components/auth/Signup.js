@@ -26,7 +26,13 @@ const BasicSignupForm = ({ values, errors, touched, status }) => {
           {touched.email && errors.email && <p>{errors.email}</p>}
           <Field value={values.pass} className='Fields' type='text' name='pass' placeholder='Password' />
           {touched.pass && errors.pass && <p>{errors.pass}</p>}
-          <Field value={values.passconf} className='Fields' type='text' name='passconf' placeholder='Confirm Password' />
+          <Field
+            value={values.passconf}
+            className='Fields'
+            type='text'
+            name='passconf'
+            placeholder='Confirm Password'
+          />
           {touched.passconf && errors.passconf && <p>{errors.passconf}</p>}
           <div>
             <button type='submit' value='Submit'>
@@ -68,7 +74,8 @@ const SignupForm = withFormik({
   handleSubmit(values, { setStatus }) {
     const { firstName, lastName, username, email, pass } = values;
     const postValues = { firstName, lastName, username, email, password: pass };
-    axiosWithAuth
+
+    axiosWithAuth()
       .post('/auth/signup', postValues)
       .then(response => {
         console.log(response.data);

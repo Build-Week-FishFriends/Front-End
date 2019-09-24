@@ -1,11 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
 function axiosWithAuth() {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token');
   return axios.create({
-    baseURL: 'https://fish-friends.herokuapp.com/',
+    baseURL: 'https://fish-friends.herokuapp.com',
     headers: {
-      Authorization: token
-    }
+      Authorization: token,
+    },
   });
 }
 export default axiosWithAuth;
