@@ -9,6 +9,8 @@ function App() {
     <>
       <Switch>
         <Route exact path='/' render={props => <Map {...props} />} />
+        <Route path='/login' render={props => <LoginForm {...props} />} />
+        <Route exact path='/signup' render={props => <SignupForm {...props} />} />
       </Switch>
     </>
   );
