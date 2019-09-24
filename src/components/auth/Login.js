@@ -12,20 +12,22 @@ const BasicLoginForm = ({ values, errors, touched, status }) => {
     }
   }, [status]);
   return (
-    <div>
-      <Form className='Form'>
-        <Field value={values.username} className='Fields' type='text' name='username' placeholder='Username/Email' />
-        {touched.username && errors.username && <p>{errors.username}</p>}
-        <Field value={values.pass} className='Fields' type='text' name='pass' placeholder='Password' />
-        {touched.pass && errors.pass && <p>{errors.pass}</p>}
-        <div>
-          <button type='submit' value='Submit'>
-            Login
-          </button>
-          <p>Or</p>
-          <button>Sign Up</button>
-        </div>
-      </Form>
+    <div className='background'>
+      <div className='FormContainer'>
+        <Form className='Form'>
+          <Field value={values.username} className='Fields' type='text' name='username' placeholder='Username/Email' />
+          {touched.username && errors.username && <p>{errors.username}</p>}
+          <Field value={values.pass} className='Fields' type='text' name='pass' placeholder='Password' />
+          {touched.pass && errors.pass && <p>{errors.pass}</p>}
+          <div className='buttoncontainer'>
+            <button type='submit' value='Submit'>
+              Login
+            </button>
+            <p>Or</p>
+            <button>Sign Up</button>
+          </div>
+        </Form>
+      </div>
     </div>
   );
 };
@@ -45,8 +47,8 @@ const LoginForm = withFormik({
     const { username, pass } = values;
     const postValues = { username, password: pass };
     console.log(postValues);
-    axios
-      .post('https://fish-friends.herokuapp.com/auth/login', postValues)
+    axiosWithAuth()
+      .post('/auth/login', postValues)
       .then(response => {
         console.log(response);
         setStatus(response.data);

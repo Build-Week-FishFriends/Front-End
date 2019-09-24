@@ -1,8 +1,8 @@
 import axios from "axios";
-function axiosWithAuth(url) {
+function axiosWithAuth() {
   const token = localStorage.getItem("token");
   return axios.create({
-    baseURL: url,
+    baseURL: 'https://fish-friends.herokuapp.com/',
     headers: {
       Authorization: token
     }
