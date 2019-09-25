@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.jpg';
 
 const StyledHomePageWrapper = styled.div`
-  height: calc(100vh - 130px);
+  height: calc(100vh - 65px);
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #fbeec1;
   section {
     display: flex;
     flex-direction: column;
@@ -46,8 +48,8 @@ const StyledHomePageWrapper = styled.div`
 const HomePage = () => (
   <StyledHomePageWrapper>
     <section>
-      <span role='img' aria-label='fishing-pole with fish on hook emoji'>
-        🎣
+      <span>
+        <img src={logo} alt='Fish Friends logo' />
       </span>
       <h2>Fish Friends</h2>
       <p>Discover, fish, and keep track of all your favorite fishing spots near you!</p>
