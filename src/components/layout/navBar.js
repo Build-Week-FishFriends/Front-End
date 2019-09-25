@@ -10,6 +10,7 @@ const StyledNavBar = styled.div`
   z-index: 100;
   height: 65px;
   background-color: white;
+  box-shadow: 0px 0px 15px 0px black;
 
   nav {
     height: 100%;
