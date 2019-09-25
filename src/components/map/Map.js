@@ -1,8 +1,8 @@
-import React, { useState, Component } from "react";
+import React, { useState } from "react";
 import ReactMapGL from "react-map-gl";
 import Lakes from "./Lakes";
 
-export default function Map({ handleLakes }) {
+export default function Map({ lakes }) {
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
@@ -25,7 +25,7 @@ export default function Map({ handleLakes }) {
       onViewportChange={_onViewportChange}
     >
       <ul>
-        <Lakes zoom={viewport.zoom} handleLakes={handleLakes} />
+        <Lakes zoom={viewport.zoom} lakes={lakes} />
       </ul>
     </ReactMapGL>
   );

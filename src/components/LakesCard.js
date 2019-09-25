@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Button, Header, Image, Modal, Item } from 'semantic-ui-react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Button, Header, Image, Modal, Item } from "semantic-ui-react";
 
 function LakesCard(props) {
   const [nowLake, setNowLake] = useState({});
@@ -8,7 +8,7 @@ function LakesCard(props) {
   const { match } = props;
   const id = match.params.id;
   useEffect(() => {
-    console.log('use effect');
+    console.log("Lakes Card, use effect");
     axios
       .get(`https://fish-friends.herokuapp.com/waterBodies/${id}`)
       .then(res => {

@@ -27,22 +27,7 @@ const StyledMapLinkWrapper = styled.div`
   }
 `;
 
-const Lakes = ({ zoom, handleLakes }) => {
-  const [lakes, setLakes] = useState([]);
-
-  useEffect(() => {
-    console.log("use effect");
-    axios
-      .get(`https://fish-friends.herokuapp.com/waterBodies`)
-      .then(res => {
-        setLakes(lakes => [...lakes, ...res.data]);
-      })
-      .catch(err => {
-        console.log(err);
-        console.error(err);
-      });
-  }, []);
-
+const Lakes = ({ zoom, lakes }) => {
   return (
     <div>
       {lakes.map((lake, id) => {
