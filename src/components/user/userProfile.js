@@ -47,11 +47,14 @@ const UserProfile = ({ user, match, history, location }) => {
       <h2>
         Hello {user.firstName} {user.lastName}
       </h2>
-      <ul>
-        {logs.map(log => (
-          <LogCard key={log.log_id} handleDeleteLog={deleteLog} log={log} />
-        ))}
-      </ul>
+      <section>
+        {logs.length > 0 && <h2>Your Logs</h2>}
+        <ul>
+          {logs.map(log => (
+            <LogCard key={log.log_id} handleDeleteLog={deleteLog} log={log} />
+          ))}
+        </ul>
+      </section>
     </section>
   );
 };
