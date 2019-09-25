@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import map from "../../assets/map.svg";
-import profile from "../../assets/profile.svg";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import map from '../../assets/map.svg';
+import profile from '../../assets/profile.svg';
 
 const StyledNavBar = styled.div`
   position: fixed;
@@ -40,15 +40,15 @@ const NavBar = ({ user }) => {
   let navLinks;
   if (user.userId) {
     navLinks = (
-      <Link to={`/${user.userName}`}>
-        <img src={profile} alt="profile icon" />
+      <Link to={`/${user.username}`}>
+        <img src={profile} alt='profile icon' />
       </Link>
     );
   } else {
     navLinks = (
       <>
-        <Link to="/login">Login</Link>
-        <Link to="/signup">Signup</Link>
+        <Link to='/login'>Login</Link>
+        <Link to='/signup'>Signup</Link>
       </>
     );
   }
@@ -56,8 +56,8 @@ const NavBar = ({ user }) => {
   return (
     <StyledNavBar>
       <nav>
-        <Link to="/map">
-          <img src={map} alt="map icon" />
+        <Link to='/map'>
+          <img src={map} alt='map icon' />
         </Link>
         {navLinks}
       </nav>
