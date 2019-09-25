@@ -5,8 +5,9 @@ import axios from 'axios';
 import LakesCard from '../LakesCard';
 import { Route } from 'react-router-dom';
 import { Button, Header, Image, Modal } from 'semantic-ui-react';
+import PrivateRoute from '../../privateRoute';
 
-const Lakes = ({ zoom }) => {
+const Lakes = ({ zoom, handleLakes }) => {
   const [lakes, setLakes] = useState([]);
 
   useEffect(() => {
@@ -31,25 +32,18 @@ const Lakes = ({ zoom }) => {
     <div>
       {lakes.map((lake, id) => {
         return (
-          <div>
-            <Marker key={lake.id} latitude={lake.latitude} longitude={lake.longitude}>
-              <Modal
-                trigger={
-                  <Link class='ui button' to={`/lakes/${lake.id}`}>
-                    {lake.facilityName}
-                  </Link>
-                }
-              />
-            </Marker>
-          </div>
+          <Marker key={lake.id} latitude={lake.latitude} longitude={lake.longitude}>
+            <Modal
+              trigger={
+                <Link className='ui button' to={`/map/${lake.id}`}>
+                  {lake.facilityName}
+                </Link>
+              }
+            />
+          </Marker>
         );
       })}
-      <Route
-        path='/lakes/:id'
-        render={props => {
-          return <LakesCard {...props} lake={lakes} />;
-        }}
-      />
+      <PrivateRoute path='/map/:id' component={LakesCard} />
     </div>
   );
 };
