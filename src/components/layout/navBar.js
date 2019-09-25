@@ -38,7 +38,7 @@ const NavBar = ({ user }) => {
   return (
     <StyledNavBar>
       <nav>
-        <Link to='/'>Map</Link>
+        <Link to='/map'>Map</Link>
         {navLinks}
       </nav>
     </StyledNavBar>
