@@ -27,7 +27,7 @@ const StyledMapLinkWrapper = styled.div`
   }
 `;
 
-const Lakes = ({ zoom, lakes }) => {
+const Lakes = ({ zoom, lakes, handleLockMap }) => {
   return (
     <div>
       {lakes.map((lake, id) => {
@@ -55,7 +55,11 @@ const Lakes = ({ zoom, lakes }) => {
             <Modal
               trigger={
                 <StyledMapLinkWrapper>
-                  <Link className="ui button" to={`/map/${lake.id}`}>
+                  <Link
+                    className="ui button"
+                    to={`/map/${lake.id}`}
+                    onClick={handleLockMap}
+                  >
                     {facility}
                   </Link>
                 </StyledMapLinkWrapper>
@@ -64,7 +68,6 @@ const Lakes = ({ zoom, lakes }) => {
           </Marker>
         );
       })}
-      <PrivateRoute path="/map/:id" component={LakesCard} />
     </div>
   );
 };

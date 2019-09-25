@@ -1,6 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Button, Header, Image, Modal, Item } from "semantic-ui-react";
+import LogList from "./logs/logList";
+import styled from "styled-components";
+
+const StyledModalWrapper = styled.div`
+  background-color: white;
+  position: fixed;
+  top: 3%;
+  right: 3%;
+  bottom: 3%;
+  left: 3%;
+  z-index: 9999;
+  box-shadow: 0 0 6px 2px black;
+  padding: 10px;
+  border-radius: 6px;
+`;
 
 function LakesCard(props) {
   const [nowLake, setNowLake] = useState({});
@@ -21,13 +36,14 @@ function LakesCard(props) {
   }, [id]);
 
   return (
-    <>
+    <StyledModalWrapper>
       <Modal.Header>{nowLake.facilityName}</Modal.Header>
 
       <Modal.Description>
         <p>{nowLake.directions}</p>
+        <section>{<LogList id={id} />}</section>
       </Modal.Description>
-    </>
+    </StyledModalWrapper>
   );
 }
 
