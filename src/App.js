@@ -8,7 +8,7 @@ import PrivateRoute from './privateRoute';
 import NavBar from './components/layout/navBar';
 import axios from 'axios';
 import HomePage from './components/layout/homePage';
-import LogForm from "./components/logs/LogForm";
+import LogForm from './components/logs/LogForm';
 
 function App() {
   const [user, setUser] = useState({});
@@ -40,10 +40,9 @@ function App() {
         <Route path='/map' render={props => <Map {...props} lakes={lakes} />} />
         <Route path='/login' render={props => <LoginForm {...props} handleUserObject={handleUserObject} />} />
         <Route path='/signup' render={props => <SignupForm {...props} handleUserObject={handleUserObject} />} />
-        <PrivateRoute path="/logsform" component={LogForm} />
-        <PrivateRoute path='/:username' component={UserProfile} />
+        <PrivateRoute path='/logsform' component={LogForm} />
+        <PrivateRoute path='/:username' component={UserProfile} user={user} />
       </Switch>
-      
     </>
   );
 }
