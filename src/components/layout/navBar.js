@@ -23,16 +23,21 @@ const StyledNavBar = styled.div`
     a {
       color: black;
       text-decoration: none;
+      min-width: 35px;
+      img {
+        width: 100%;
+      }
     }
 
     a:not(:last-of-type) {
-      margin-right: 25px;
+      margin-right: 50px;
+      margin-left: 25px;
     }
   }
 `;
 const NavBar = ({ user }) => {
   let navLinks;
-  if (user.isLoggedIn) {
+  if (user.userId) {
     navLinks = (
       <Link to={`/${user.userName}`}>
         <img src={profile} alt="profile icon" />
