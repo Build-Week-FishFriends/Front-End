@@ -11,9 +11,10 @@ const StyledNavBar = styled.div`
   width: 100%;
   z-index: 100;
   height: 65px;
-  background-color: white;
+  background-color: #FBEEC1;
   box-shadow: 0px 0px 15px 0px black;
-
+  color:#123607;
+  font-family: 'Russo One', sans-serif;
   nav {
     height: 100%;
     display: flex;

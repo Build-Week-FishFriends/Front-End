@@ -1,42 +1,58 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axiosWithAuth from './WithAuth';
 import './Signup.css';
+import { Label } from 'semantic-ui-react';
 
 const BasicSignupForm = ({ values, errors, touched, status, history, handleUserObject }) => {
+  const [inputType, setInputType]= useState('password')
   useEffect(() => {
     status && handleUserObject(status.userObject);
     status && history.push('/');
   });
+  function hidePass(){
+    if (inputType === 'password'){
+      setInputType('text')
+    }else{
+      setInputType('password')
+    }
+  }
   return (
-    <div className='background'>
-      <div className='FormContainer'>
-        <Form className='Form'>
-          <Field value={values.firstName} className='Fields' type='text' name='firstName' placeholder='First Name' />
-          {touched.firstname && errors.firstname && <p>{errors.firstname}</p>}
-          <Field value={values.lastName} className='Fields' type='text' name='lastName' placeholder='Last Name' />
-          {touched.lastname && errors.lastname && <p>{errors.lastname}</p>}
-          <Field value={values.username} className='Fields' type='text' name='username' placeholder='Username' />
-          {touched.username && errors.username && <p>{errors.username}</p>}
-          <Field value={values.email} className='Fields' type='text' name='email' placeholder='Email' />
-          {touched.email && errors.email && <p>{errors.email}</p>}
-          <Field value={values.pass} className='Fields' type='text' name='pass' placeholder='Password' />
-          {touched.pass && errors.pass && <p>{errors.pass}</p>}
-          <Field
-            value={values.passconf}
-            className='Fields'
-            type='text'
-            name='passconf'
-            placeholder='Confirm Password'
-          />
-          {touched.passconf && errors.passconf && <p>{errors.passconf}</p>}
-          <div>
-            <button type='submit' value='Submit'>
-              Submit
-            </button>
-          </div>
-        </Form>
+    <div className='html'>
+      <div className='background'>
+        <div className='FormContainer'>
+          <Form className='Form'>
+            <Field value={values.firstName} className='Fields' type='text' name='firstName' placeholder='First Name' />
+            {touched.firstname && errors.firstname && <p>{errors.firstname}</p>}
+            <Field value={values.lastName} className='Fields' type='text' name='lastName' placeholder='Last Name' />
+            {touched.lastname && errors.lastname && <p>{errors.lastname}</p>}
+            <Field value={values.username} className='Fields' type='text' name='username' placeholder='Username' />
+            {touched.username && errors.username && <p>{errors.username}</p>}
+            <Field value={values.email} className='Fields' type='text' name='email' placeholder='Email' />
+            {touched.email && errors.email && <p>{errors.email}</p>}
+            <Field value={values.pass} className='Fields' type={inputType} name='pass' placeholder='Password' />
+            {touched.pass && errors.pass && <p>{errors.pass}</p>}
+            <Field
+              value={values.passconf}
+              className='Fields'
+              type={inputType}
+              name='passconf'
+              placeholder='Confirm Password'
+            />
+            {touched.passconf && errors.passconf && <p>{errors.passconf}</p>}
+            <Label><Field
+              type="checkbox"
+              name="showPass"
+              onClick={()=> hidePass()}
+            />Show Password</Label>
+            <div>
+              <button type='submit' value='Submit'>
+                Submit
+              </button>
+            </div>
+          </Form>
+        </div>
       </div>
     </div>
   );
