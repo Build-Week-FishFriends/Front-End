@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { Marker } from "react-map-gl";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import LakesCard from "../LakesCard";
-import { Route } from "react-router-dom";
-import { Button, Header, Image, Modal } from "semantic-ui-react";
-import PrivateRoute from "../../privateRoute";
-import pin from "../../assets/pin.svg";
-import styled from "styled-components";
+import React, { useState, useEffect } from 'react';
+import { Marker } from 'react-map-gl';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import LakesCard from '../LakesCard';
+import { Route } from 'react-router-dom';
+import { Button, Header, Image, Modal } from 'semantic-ui-react';
+import PrivateRoute from '../../privateRoute';
+import pin from '../../assets/pin.svg';
+import styled from 'styled-components';
 
 const StyledMapLinkWrapper = styled.div`
   a {
@@ -27,7 +27,7 @@ const StyledMapLinkWrapper = styled.div`
   }
 `;
 
-const Lakes = ({ zoom, lakes, handleLockMap }) => {
+const Lakes = ({ zoom, lakes }) => {
   return (
     <div>
       {lakes.map((lake, id) => {
@@ -35,31 +35,23 @@ const Lakes = ({ zoom, lakes, handleLockMap }) => {
         if (zoom < 8) {
           facility = (
             <div>
-              <img src={pin} alt="map pin icon" />
+              <img src={pin} alt='map pin icon' />
             </div>
           );
         } else {
           facility = (
-            <div className="background-solid">
-              <img src={pin} alt="map pin icon" />
+            <div className='background-solid'>
+              <img src={pin} alt='map pin icon' />
               <div>{lake.facilityName}</div>
             </div>
           );
         }
         return (
-          <Marker
-            key={lake.id}
-            latitude={lake.latitude}
-            longitude={lake.longitude}
-          >
+          <Marker key={lake.id} latitude={lake.latitude} longitude={lake.longitude}>
             <Modal
               trigger={
                 <StyledMapLinkWrapper>
-                  <Link
-                    className="ui button"
-                    to={`/map/${lake.id}`}
-                    onClick={handleLockMap}
-                  >
+                  <Link className='ui button' to={`/map/${lake.id}`}>
                     {facility}
                   </Link>
                 </StyledMapLinkWrapper>
