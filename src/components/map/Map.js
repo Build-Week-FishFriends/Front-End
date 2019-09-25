@@ -17,6 +17,7 @@ export default function Map({ handleLakes }) {
 
   return (
     <ReactMapGL
+      mapStyle='mapbox://styles/mapbox/dark-v9'
       {...viewport}
       mapboxApiAccessToken={
         'pk.eyJ1IjoibG9zZXBoamFtYmVydCIsImEiOiJjazB3cG1mNnAxY2ltM21wb2JsdnUzajNsIn0.BLFLlkgEnpDe553A9dmFAA'
