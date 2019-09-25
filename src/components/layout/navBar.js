@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import map from "../../assets/map.svg";
 import profile from "../../assets/profile.svg";
+import { Label } from "semantic-ui-react";
 
 const StyledNavBar = styled.div`
   position: fixed;
@@ -36,6 +37,10 @@ const StyledNavBar = styled.div`
     }
   }
 `;
+function logout() {
+  localStorage.clear();
+  window.location.href = '/';
+}
 const NavBar = ({ user }) => {
   let navLinks;
   if (user.userId) {
@@ -60,6 +65,7 @@ const NavBar = ({ user }) => {
           <img src={map} alt="map icon" />
         </Link>
         {navLinks}
+        <a className='signOut' onClick={()=> logout()}>Sign Out</a>
       </nav>
     </StyledNavBar>
   );
