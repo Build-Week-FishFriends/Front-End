@@ -24,7 +24,7 @@ function App() {
     <>
       <NavBar user={user} />
       <Switch>
-        <Route exact path='/' component={Map} handleLakes={handleLakes} />
+        <Route exact path='/' render={props => <Map {...props} handleLakes={handleLakes} />} />
         <Route path='/login' render={props => <LoginForm {...props} handleUserObject={handleUserObject} />} />
         <Route path='/signup' render={props => <SignupForm {...props} handleUserObject={handleUserObject} />} />
         <PrivateRoute path='/lakes/:id' component={LakesCard} />

@@ -6,7 +6,7 @@ import LakesCard from '../LakesCard';
 import { Route } from 'react-router-dom';
 import { Button, Header, Image, Modal } from 'semantic-ui-react';
 
-const Lakes = ({ zoom }) => {
+const Lakes = ({ zoom, handleLakes }) => {
   const [lakes, setLakes] = useState([]);
 
   useEffect(() => {
@@ -31,25 +31,17 @@ const Lakes = ({ zoom }) => {
     <div>
       {lakes.map((lake, id) => {
         return (
-          <div>
-            <Marker key={lake.id} latitude={lake.latitude} longitude={lake.longitude}>
-              <Modal
-                trigger={
-                  <Link class='ui button' to={`/lakes/${lake.id}`}>
-                    {lake.facilityName}
-                  </Link>
-                }
-              />
-            </Marker>
-          </div>
+          <Marker key={lake.id} latitude={lake.latitude} longitude={lake.longitude}>
+            <Modal
+              trigger={
+                <Link className='ui button' to={`/lakes/${lake.id}`}>
+                  {lake.facilityName}
+                </Link>
+              }
+            />
+          </Marker>
         );
       })}
-      <Route
-        path='/lakes/:id'
-        render={props => {
-          return <LakesCard {...props} lake={lakes} />;
-        }}
-      />
     </div>
   );
 };

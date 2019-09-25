@@ -11,15 +11,19 @@ export default function Map({ handleLakes }) {
     zoom: 5,
   });
 
+  const _onViewportChange = viewport => {
+    setViewport({ ...viewport });
+  };
+
   return (
     <ReactMapGL
       {...viewport}
       mapboxApiAccessToken={
         'pk.eyJ1IjoibG9zZXBoamFtYmVydCIsImEiOiJjazB3cG1mNnAxY2ltM21wb2JsdnUzajNsIn0.BLFLlkgEnpDe553A9dmFAA'
       }
-      onViewportChange={viewport => setViewport({ viewport })}>
+      onViewportChange={_onViewportChange}>
       <ul>
-        <Lakes zoom={viewport.zoom} />
+        <Lakes zoom={viewport.zoom} handleLakes={handleLakes} />
       </ul>
     </ReactMapGL>
   );
