@@ -8,8 +8,14 @@ const StyledLogCard = styled.li`
   padding: 15px;
   box-shadow: 0 0 3px 0px black;
   border-radius: 3px;
+
   h3 {
     font-size: 1.6rem;
+  }
+
+  button {
+    width: 75%;
+    margin-top: 50px;
   }
 `;
 
