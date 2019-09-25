@@ -8,6 +8,7 @@ import UserProfile from "./components/user/userProfile";
 import PrivateRoute from "./privateRoute";
 import NavBar from "./components/layout/navBar";
 import axios from "axios";
+import LogForm from "./components/logs/LogForm";
 
 function App() {
   const [user, setUser] = useState({});
@@ -54,8 +55,16 @@ function App() {
             <SignupForm {...props} handleUserObject={handleUserObject} />
           )}
         />
+        <Route
+          path="/logsform"
+          render={props => (
+            <LogForm {...props}  />
+          )}
+        />
         <PrivateRoute path="/:username" component={UserProfile} />
+        
       </Switch>
+      
     </>
   );
 }
