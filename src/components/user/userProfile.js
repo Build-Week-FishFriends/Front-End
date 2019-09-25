@@ -2,6 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import axiosWithAuth from '../auth/WithAuth';
 
+const LogCard = () => (
+  <li>
+    <div>Log Card</div>
+  </li>
+);
+
 const UserProfile = ({ user, match, history, location }) => {
   const [logs, setLogs] = useState([]);
   useEffect(() => {
@@ -19,16 +25,21 @@ const UserProfile = ({ user, match, history, location }) => {
         console.error(err);
       });
   }, [user.userId]);
-  // axios get req to get logs by user id
-  // logRoute/user-logs/:id
 
   // button to delete a log
   // /logRoute/user-logs/delete-logs/:id
 
   return (
-    <div>
-      <div>This is the user profile</div>
-    </div>
+    <section>
+      <h2>
+        Hello {user.firstName} {user.lastName}
+      </h2>
+      <ul>
+        {logs.map(log => (
+          <LogCard />
+        ))}
+      </ul>
+    </section>
   );
 };
 
