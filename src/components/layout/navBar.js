@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const StyledNavBar = styled.div`
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
@@ -29,8 +29,8 @@ const NavBar = ({ user }) => {
   } else {
     navLinks = (
       <>
-        <Link to='/login'>Login</Link>
-        <Link to='/signup'>Signup</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/signup">Signup</Link>
       </>
     );
   }
@@ -38,7 +38,7 @@ const NavBar = ({ user }) => {
   return (
     <StyledNavBar>
       <nav>
-        <Link to='/map'>Map</Link>
+        <Link to="/map">Map</Link>
         {navLinks}
       </nav>
     </StyledNavBar>

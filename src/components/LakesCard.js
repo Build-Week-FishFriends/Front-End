@@ -37,6 +37,7 @@ function LakesCard(props) {
 
   return (
     <StyledModalWrapper>
+      <button onClick={() => props.history.goBack()}>Close Modal</button>
       <Modal.Header>{nowLake.facilityName}</Modal.Header>
 
       <Modal.Description>
