@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import map from "../../assets/map.svg";
+import profile from "../../assets/profile.svg";
 
 const StyledNavBar = styled.div`
   position: fixed;
@@ -18,6 +20,11 @@ const StyledNavBar = styled.div`
     align-items: center;
     justify-content: flex-start;
 
+    a {
+      color: black;
+      text-decoration: none;
+    }
+
     a:not(:last-of-type) {
       margin-right: 25px;
     }
@@ -26,7 +33,11 @@ const StyledNavBar = styled.div`
 const NavBar = ({ user }) => {
   let navLinks;
   if (user.isLoggedIn) {
-    navLinks = <Link to={`/${user.userName}`}>Profile</Link>;
+    navLinks = (
+      <Link to={`/${user.userName}`}>
+        <img src={profile} alt="profile icon" />
+      </Link>
+    );
   } else {
     navLinks = (
       <>
@@ -39,7 +50,9 @@ const NavBar = ({ user }) => {
   return (
     <StyledNavBar>
       <nav>
-        <Link to="/map">Map</Link>
+        <Link to="/map">
+          <img src={map} alt="map icon" />
+        </Link>
         {navLinks}
       </nav>
     </StyledNavBar>
