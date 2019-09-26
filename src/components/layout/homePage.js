@@ -67,7 +67,6 @@ const StyledHomePageWrapper = styled.div`
 `;
 
 const HomePage = ({ user, isLoading }) => {
-  console.log('homepage');
   let homeLinks;
   if (!user.userId) {
     homeLinks = (
