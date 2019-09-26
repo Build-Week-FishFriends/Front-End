@@ -58,7 +58,7 @@ function App() {
         <Route
           path="/logsform"
           render={props => (
-            <LogForm {...props}  />
+            <LogForm {...props}   />
           )}
         />
         <PrivateRoute path="/:username" component={UserProfile} />

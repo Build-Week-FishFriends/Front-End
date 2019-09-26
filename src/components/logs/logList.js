@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const LogList = ({ id }) => {
+
+const LogList = (props) => {
   const [logs, setLogs] = useState([]);
+  const {id} = props;
+
+  console.log("idd", id)
+
   useEffect(() => {
     console.log("Logs List, use effect");
     axios
@@ -25,6 +30,7 @@ const LogList = ({ id }) => {
         return (
           <li key={i}>
             <h3>{log.username}</h3>
+           
             <div>
               <h3>Fish Caught</h3>
               <ul>

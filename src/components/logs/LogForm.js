@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+
 import WithAuth from '../auth/WithAuth';
 
-const LogForm = ({errors, touched, values, status}) => {
-   const [newLog, setNewLog] = useState([]);
 
+
+const LogForm = ({id, errors, touched, values, status } ) => {
+
+
+   const [newLog, setNewLog] = useState([]);
+   console.log("sssssss",id)
+  
    useEffect(() => {
        if (status) {
            setNewLog([...newLog, status]);
        }
    }, [status])
 
+   
     return (
         <div className='LogForm'>
             <h1>User Log</h1>
@@ -21,7 +27,7 @@ const LogForm = ({errors, touched, values, status}) => {
             {touched.baitType && errors.baitType && (
          <p className="error">{errors.baitType}</p>
      )}
-         <Field className='fields' value={values.waterBodyId} type='number' name="waterBodyId" placeholder="waterBody Id" />
+         <Field className='fields' value={values.facilityName} type='text' name="waterBodyId" placeholder="waterBody Id" />
             {touched.waterBodyId && errors.waterBodyId && (
          <p className="error">{errors.waterBodyId}</p>
      )}
@@ -38,7 +44,7 @@ const LogForm = ({errors, touched, values, status}) => {
      )}
      </label>
      <label>Time Spent
-            <Field className='fields' value={values.timeSpent} type='time' name="timeSpent" placeholder="00" />
+            <Field className='fields' value={values.timeSpent} type='number' name="timeSpent" placeholder="hr" />
             </label>
             <label>Time of Day
             <Field className='fields' value={values.timeOfDay} type='time' name="timeOfDay" placeholder="00" />

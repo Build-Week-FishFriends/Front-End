@@ -5,6 +5,7 @@ import LogList from "./logs/logList";
 import styled from "styled-components";
 import back from "../assets/back.svg";
 import { Link } from "react-router-dom";
+import WithAuth from "./auth/WithAuth";
 
 const StyledModalWrapper = styled.div`
   background-color: white;
@@ -54,6 +55,8 @@ function LakesCard(props) {
       });
   }, [id]);
 
+
+
   return (
     <StyledModalWrapper>
       <button className="modal-close" onClick={() => props.history.goBack()}>
@@ -69,9 +72,10 @@ function LakesCard(props) {
         </section>
         <section>
           <h3>Recent Logs</h3>
-          {<LogList id={id} />}
+          {<LogList id={id} deleteLog={deleteLog} />}
         </section>
-        <Link className='logLink' to="/logsform">Add a Log</Link>
+        <Link  className='logLink' to="/logsform" params={{id:id}}
+        >Add a Log</Link>
       </section>
     </StyledModalWrapper>
   );
