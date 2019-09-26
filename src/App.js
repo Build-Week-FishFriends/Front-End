@@ -39,7 +39,7 @@ function App() {
       <NavBar user={user} />
       <Switch>
         <Route exact path='/' render={props => <HomePage {...props} user={user} isLoading={isLoading} />} />
-        <Route path='/map' render={props => <Map {...props} lakes={lakes} />} />
+        <PrivateRoute path='/map' component={Map} lakes={lakes} />
         <Route path='/login' render={props => <LoginForm {...props} handleUserObject={handleUserObject} />} />
         <Route path='/signup' render={props => <SignupForm {...props} handleUserObject={handleUserObject} />} />
         <PrivateRoute path='/logsform/:id' component={LogForm} />
