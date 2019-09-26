@@ -8,7 +8,7 @@ const StyledHomePageWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fbeec1;
+  background-color: #659DBD;
   section {
     display: flex;
     flex-direction: column;
@@ -31,7 +31,7 @@ const StyledHomePageWrapper = styled.div`
     flex-direction: column;
     a {
       color: white;
-      background-color: #1abc9c;
+      background-color: #8D8741;
       padding: 15px 0;
       margin: 20px 0;
       padding-bottom: 17px;
@@ -40,11 +40,12 @@ const StyledHomePageWrapper = styled.div`
       text-decoration: none;
       justify-content: center;
       &:hover {
-        background-color: #109177;
+        background-color: #BC986A;
       }
     }
   }
 `;
+
 const HomePage = () => (
   <StyledHomePageWrapper>
     <section>

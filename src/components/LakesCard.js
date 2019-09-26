@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import WithAuth from "./auth/WithAuth";
 
 const StyledModalWrapper = styled.div`
-  background-color: white;
+  background-color: #FBEEC1;
   position: fixed;
   top: 3%;
   right: 3%;
@@ -28,12 +28,11 @@ const StyledModalWrapper = styled.div`
     top: 10px;
     left: 10px;
     margin: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: #BC986A;
     border-radius: 100%;
-    border: none;
-    
+    border: 1px solid #BC986A;
     &:hover {
-      background-color: rgba(0, 0, 0, 0.2);
+      background-color: #8D8741;
     }
   }
 `;
