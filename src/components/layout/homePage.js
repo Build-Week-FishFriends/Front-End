@@ -8,14 +8,31 @@ const StyledHomePageWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #659DBD;
+  background-color: #659dbd;
   section {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   span {
-    font-size: 3rem;
+    display: flex;
+    background-color: #fbeec1;
+    border-radius: 100%;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    box-shadow: 0 0 6px 0 transparent;
+    transition: 200ms;
+    &:hover {
+      box-shadow: 0 0 3px 0 black;
+    }
+    img {
+      position: absolute;
+      width: 100%;
+    }
   }
   h2 {
     font-size: 2rem;
@@ -31,7 +48,7 @@ const StyledHomePageWrapper = styled.div`
     flex-direction: column;
     a {
       color: white;
-      background-color: #8D8741;
+      background-color: #8d8741;
       padding: 15px 0;
       margin: 20px 0;
       padding-bottom: 17px;
@@ -40,7 +57,7 @@ const StyledHomePageWrapper = styled.div`
       text-decoration: none;
       justify-content: center;
       &:hover {
-        background-color: #BC986A;
+        background-color: #bc986a;
       }
     }
   }
