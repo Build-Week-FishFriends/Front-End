@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 
 import WithAuth from '../auth/WithAuth';
 
 const LogForm = ({ errors, touched, values, status, history }) => {
-  const [newLog, setNewLog] = useState([]);
-  useEffect(() => {
-    if (status) {
-      setNewLog([...newLog, status]);
-      history.goBack();
-    }
-  }, [status]);
+  useEffect(() => status && history.goBack(), [status, history]);
 
   return (
     <div className='LogForm'>
@@ -62,16 +56,24 @@ const FormikLogForm = withFormik({
     baitType: Yup.string().required('bait used here'),
     fishId: Yup.string().required('what kind fish u caught '),
   }),
-  handleSubmit(values, { setStatus, props }) {
-    const { id } = props.match.params;
+  handleSubmit(
+    values,
+    {
+      setStatus,
+      props: {
+        match: {
+          params: { id },
+        },
+      },
+    }
+  ) {
     values.waterBodyId = id;
     WithAuth()
       .post('/logRoute', values)
       .then(res => {
-        console.log(res);
         setStatus(res.data);
       })
-      .catch(err => console.log(err.response));
+      .catch(err => console.error(err));
   },
 })(LogForm);
 
