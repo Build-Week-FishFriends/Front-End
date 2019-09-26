@@ -40,6 +40,7 @@ const StyledHomePageWrapper = styled.div`
   p {
     font-size: 1.2rem;
     text-align: center;
+    padding: 0 8%;
   }
 
   div {
@@ -63,7 +64,7 @@ const StyledHomePageWrapper = styled.div`
   }
 `;
 
-const HomePage = () => (
+const HomePage = ({ user }) => (
   <StyledHomePageWrapper>
     <section>
       <span>
@@ -71,10 +72,17 @@ const HomePage = () => (
       </span>
       <h2>Fish Friends</h2>
       <p>Discover, fish, and keep track of all your favorite fishing spots near you!</p>
-      <div>
-        <Link to='/login'>Login</Link>
-        <Link to='/signup'>Signup</Link>
-      </div>
+      {!user && (
+        <div>
+          <Link to='/login'>Login</Link>
+          <Link to='/signup'>Signup</Link>
+        </div>
+      )}
+      {user && (
+        <div>
+          <Link to='/map'>Discover Fishable Waters</Link>
+        </div>
+      )}
     </section>
   </StyledHomePageWrapper>
 );
