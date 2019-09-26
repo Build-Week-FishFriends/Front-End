@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+
 import axiosWithAuth from '../auth/WithAuth';
 import LogCard from '../logs/logCard';
 
-const UserProfile = ({ user, match, history, location }) => {
+const UserProfile = ({ user }) => {
   const [logs, setLogs] = useState([]);
   useEffect(() => {
     axiosWithAuth()

@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { withFormik, Form, Field, setIn } from 'formik';
+import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import axiosWithAuth from './WithAuth';
 import { Label } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+
+import axiosWithAuth from './WithAuth';
 
 const BasicLoginForm = ({ values, errors, touched, status, history, handleUserObject }) => {
-  const [inputType, setInputType]= useState('password')
+  const [inputType, setInputType] = useState('password');
   useEffect(() => {
     status && handleUserObject(status.userObject);
-    status && history.push('/');
+    status && history.push('/map');
   });
-  function hidePass(){
-    if (inputType === 'password'){
-      setInputType('text')
-    }else{
-      setInputType('password')
+  function hidePass() {
+    if (inputType === 'password') {
+      setInputType('text');
+    } else {
+      setInputType('password');
     }
   }
   return (
@@ -22,21 +24,28 @@ const BasicLoginForm = ({ values, errors, touched, status, history, handleUserOb
       <div className='background'>
         <div className='FormContainer'>
           <Form className='Form'>
-            <Field value={values.username} className='Fields' type='text' name='username' placeholder='Username/Email' />
+            <Field
+              value={values.username}
+              className='Fields'
+              type='text'
+              name='username'
+              placeholder='Username/Email'
+            />
             {touched.username && errors.username && <p>{errors.username}</p>}
             <Field value={values.pass} className='Fields' type={inputType} name='pass' placeholder='Password' />
             {touched.pass && errors.pass && <p>{errors.pass}</p>}
-            <Label><Field
-              type="checkbox"
-              name="showPass"
-              onClick={()=> hidePass()}
-            />Show Password</Label>
+            <Label>
+              <Field type='checkbox' name='showPass' onClick={() => hidePass()} />
+              Show Password
+            </Label>
             <div className='buttoncontainer'>
               <button type='submit' value='Submit'>
                 Login
               </button>
               <p>Or</p>
-              <button>Sign Up</button>
+              <Link to='/signup' className='link-button'>
+                Sign Up
+              </Link>
             </div>
           </Form>
         </div>
@@ -59,16 +68,14 @@ const LoginForm = withFormik({
   handleSubmit(values, { setStatus }) {
     const { username, pass } = values;
     const postValues = { username, password: pass };
-    console.log(postValues);
     axiosWithAuth()
       .post('/auth/login', postValues)
       .then(response => {
-        console.log(response);
         setStatus(response.data);
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.userObject));
       })
-      .catch(error => console.log('Error'));
+      .catch(error => console.error('Error', error));
   },
 })(BasicLoginForm);
 export default LoginForm;
