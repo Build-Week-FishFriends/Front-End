@@ -10,7 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Ubuntu', sans-serif;
-  background-color:  #659DBD;
+  background-color: #659dbd;
 }
 
 code {
@@ -40,7 +40,7 @@ li {
   justify-content: center;
   margin: 0 auto;
 
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .fields {
@@ -107,8 +107,6 @@ li {
   justify-content: center;
 }
 
-
-
 .logLink {
   font-size: 25px;
   text-decoration: none;
@@ -156,11 +154,9 @@ h3 {
 ul {
   border-bottom: 1px solid;
 }
-<<<<<<< HEAD
-
 
 .logprofile {
-  background-color: #FBEEC0;
+  background-color: #fbeec0;
 }
 .userprof {
   display: flex;
@@ -170,11 +166,8 @@ ul {
 
 .userprof h2 {
   font-size: 50px;
-
 }
 
 .userprof h3 {
   font-size: 30px;
 }
-=======
->>>>>>> signup button on login form links to signup page
