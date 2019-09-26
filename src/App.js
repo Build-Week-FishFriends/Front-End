@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import LoginForm from './components/auth/Login';
-import SignupForm from './components/auth/Signup';
 import { Switch, Route } from 'react-router-dom';
+import axios from 'axios';
+
+import PrivateRoute from './privateRoute';
 import Map from './components/map/Map';
 import UserProfile from './components/user/userProfile';
-import PrivateRoute from './privateRoute';
 import NavBar from './components/layout/navBar';
-import axios from 'axios';
 import HomePage from './components/layout/homePage';
 import LogForm from './components/logs/LogForm';
+import LoginForm from './components/auth/Login';
+import SignupForm from './components/auth/Signup';
 
 function App() {
   const [user, setUser] = useState({});
@@ -19,7 +20,6 @@ function App() {
 
   const [lakes, setLakes] = useState([]);
   useEffect(() => {
-    console.log('App.js use effect');
     axios
       .get(`https://fish-friends.herokuapp.com/waterBodies`)
       .then(res => {
@@ -27,7 +27,6 @@ function App() {
         setIsLoading(isLoading => !isLoading);
       })
       .catch(err => {
-        console.log(err);
         console.error(err);
       });
   }, []);

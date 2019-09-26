@@ -3,9 +3,9 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import LogList from './logs/logList';
+import LogList from '../logs/logList';
 
-import back from '../assets/back.svg';
+import back from '../../assets/back.svg';
 
 const StyledModalWrapper = styled.div`
   background-color: #fbeec1;
@@ -56,7 +56,7 @@ function LakesCard(props) {
 
   return (
     <StyledModalWrapper className='modalcard'>
-      <button className='modal-close' onClick={() => props.history.goBack()}>
+      <button className='modal-close' onClick={() => props.history.push('/map')}>
         <img src={back} alt='back button' />
       </button>
       <h1>{nowLake.facilityName}</h1>

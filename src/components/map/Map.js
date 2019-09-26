@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import Lakes from './Lakes';
 import PrivateRoute from '../../privateRoute';
-import LakesCard from '../LakesCard';
+import LakesCard from './LakesCard';
 
 const StyledMapWrapper = styled.div`
   position: fixed;
