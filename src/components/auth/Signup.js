@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import axiosWithAuth from './WithAuth';
-import './Signup.css';
 import { Label } from 'semantic-ui-react';
+
+import axiosWithAuth from './WithAuth';
+
+import './Signup.css';
 
 const BasicSignupForm = ({ values, errors, touched, status, history, handleUserObject }) => {
   const [inputType, setInputType] = useState('password');
@@ -90,52 +92,12 @@ const SignupForm = withFormik({
     axiosWithAuth()
       .post('/auth/register', postValues)
       .then(response => {
-        console.log(response.data);
         setStatus(response.data);
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.userObject));
       })
-      .catch(error => console.log('Error'));
+      .catch(error => console.error('Error', error));
   },
 })(BasicSignupForm);
-
-// function Signup() {
-//   const [credentials, setCredentials] = useState({username: '', password: ''})
-
-//   const login = e => {
-//       e.preventDefault();
-//       axios
-//           .post('https://soupkitchen-buildweek.herokuapp.com/api/register', credentials)
-//           .then(res => {
-//               console.log(res)
-//               // localStorage.setItem('token', res.data.token)
-//           })
-//           .catch(err => {
-//               console.log(err)
-//           })
-//   }
-
-//   const handleChange = e => {
-//       console.log(credentials)
-//       setCredentials({...credentials, [e.target.name]: e.target.value})
-//   }
-
-//   return (
-
-//           <Label>Username</Label>
-//               <Input
-//                   type='text'
-//                   name='username'
-//                   value={credentials.username}
-//                   onChange={handleChange}
-//               />
-//               <Label>Password</Label>
-//               <Input
-//                   type='password'
-//                   name='password'
-//                   value={credentials.password}
-//                   onChange={handleChange}
-//               />
-//               <Button>Submit!</Button>
 
 export default SignupForm;
