@@ -15,6 +15,11 @@ ul,
 li {
   margin: 0;
   padding: 0;
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .LogForm {
@@ -81,4 +86,60 @@ margin: 0 auto;
 }
 .errors {
 	color-adjust: red;
+}
+
+.hBVqnq {
+  width:500px;
+  height: 500px;
+}
+
+.logLink {
+  font-size: 25px;
+  text-decoration: none;
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+ background-color: #8D8741;
+ color: white;
+ width: 300px;
+ align-self: center;
+ margin: 0 auto;
+ 
+}
+
+.logLink:hover {
+  background-color: #BC986A;
+  color: white;
+}
+
+li {
+  
+  padding-bottom: 5px;
+}
+
+
+h1 {
+  font-size: 50px;
+}
+
+.hBVqnq {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h3 {
+  display: flex;
+  justify-content: center;
+}
+
+.dlGSFB {
+  width: 500px;
+  border-radius: 4
+}
+
+ul {
+  border-bottom: 1px solid;
 }

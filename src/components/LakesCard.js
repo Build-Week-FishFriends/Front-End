@@ -17,7 +17,7 @@ const StyledModalWrapper = styled.div`
   z-index: 9999;
   box-shadow: 0 0 6px 2px black;
   padding: 100px 25px;
-  border-radius: 6px;
+  border-radius: 10px;
   overflow: scroll;
   .modal-close {
     position: absolute;
@@ -31,6 +31,7 @@ const StyledModalWrapper = styled.div`
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 100%;
     border: none;
+    
     &:hover {
       background-color: rgba(0, 0, 0, 0.2);
     }
@@ -60,7 +61,7 @@ function LakesCard(props) {
       <button className="modal-close" onClick={() => props.history.goBack()}>
         <img src={back} alt="back button" />
       </button>
-      <h2>{nowLake.facilityName}</h2>
+      <h1>{nowLake.facilityName}</h1>
       <section>
         <section>
           <h3>Directions</h3>
@@ -74,6 +75,7 @@ function LakesCard(props) {
           Add a Log
         </Link>
       </section>
+      
     </StyledModalWrapper>
   );
 }
