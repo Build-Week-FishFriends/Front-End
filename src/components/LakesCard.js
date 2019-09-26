@@ -13,6 +13,7 @@ const StyledModalWrapper = styled.div`
   top: 75px;
   left: 3vh;
   width: 400px;
+  max-width: 90%;
   height: 500px;
   z-index: 9999;
   box-shadow: 0 0 6px 2px black;
