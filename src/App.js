@@ -55,16 +55,9 @@ function App() {
             <SignupForm {...props} handleUserObject={handleUserObject} />
           )}
         />
-        <Route
-          path="/logsform"
-          render={props => (
-            <LogForm {...props}   />
-          )}
-        />
+        <Route path="/logsform/:id" render={props => <LogForm {...props} />} />
         <PrivateRoute path="/:username" component={UserProfile} />
-        
       </Switch>
-      
     </>
   );
 }

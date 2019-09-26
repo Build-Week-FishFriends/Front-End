@@ -55,14 +55,12 @@ function LakesCard(props) {
       });
   }, [id]);
 
-
-
   return (
     <StyledModalWrapper>
       <button className="modal-close" onClick={() => props.history.goBack()}>
         <img src={back} alt="back button" />
       </button>
-      
+
       <h2>{nowLake.facilityName}</h2>
 
       <section>
@@ -72,10 +70,11 @@ function LakesCard(props) {
         </section>
         <section>
           <h3>Recent Logs</h3>
-          {<LogList id={id} deleteLog={deleteLog} />}
+          {<LogList id={id} />}
         </section>
-        <Link  className='logLink' to="/logsform" params={{id:id}}
-        >Add a Log</Link>
+        <Link className="logLink" to={`/logsform/${id}`}>
+          Add a Log
+        </Link>
       </section>
     </StyledModalWrapper>
   );
