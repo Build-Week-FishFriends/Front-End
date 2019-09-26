@@ -29,12 +29,15 @@ const LogList = (props) => {
       {logs.map((log, i) => {
         return (
           <li key={i}>
-            <h3>{log.username}</h3>
+           
            
             <div>
-              <h3>Fish Caught</h3>
+            <h1>{log.username}</h1>
               <ul>
-                <li>{log.fishName}</li>
+                <li>Fish caught : {log.fishName}.</li>
+                <li>Fish Amount : {log.fishCount}</li>
+                <li>Time spent  : {log.timeSpent}</li>
+                <li>Time Of Day : {log.timeOfDay}</li>
               </ul>
             </div>
           </li>
