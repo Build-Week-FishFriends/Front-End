@@ -96,11 +96,6 @@ li {
   color-adjust: red;
 }
 
-.modal-card {
-  width: 500px;
-  height: 500px;
-}
-
 .modalcard h1 {
   align-items: center;
   display: flex;
@@ -119,7 +114,7 @@ li {
   color: white;
   width: 300px;
   align-self: center;
-  margin: 0 auto;
+  margin: 25px auto;
 }
 
 .logLink:hover {
