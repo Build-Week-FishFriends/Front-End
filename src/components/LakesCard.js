@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Button, Header, Image, Modal, Item } from 'semantic-ui-react';
-import LogList from './logs/logList';
 import styled from 'styled-components';
-import back from '../assets/back.svg';
 import { Link } from 'react-router-dom';
-import WithAuth from './auth/WithAuth';
+
+import LogList from './logs/logList';
+
+import back from '../assets/back.svg';
 
 const StyledModalWrapper = styled.div`
   background-color: #fbeec1;
@@ -44,14 +44,12 @@ function LakesCard(props) {
   const { match } = props;
   const id = match.params.id;
   useEffect(() => {
-    console.log('Lakes Card, use effect');
     axios
       .get(`https://fish-friends.herokuapp.com/waterBodies/${id}`)
       .then(res => {
         setNowLake(res.data);
       })
       .catch(err => {
-        console.log(err);
         console.error(err);
       });
   }, [id]);
