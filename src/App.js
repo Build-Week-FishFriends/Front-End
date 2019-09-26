@@ -34,9 +34,14 @@ function App() {
 
   const handleUserObject = user => setUser(user);
 
+  const logout = () => {
+    localStorage.clear();
+    window.location.href = '/';
+  };
+
   return (
     <>
-      <NavBar user={user} />
+      <NavBar user={user} logout={logout} isLoading={isLoading} />
       <Switch>
         <Route exact path='/' render={props => <HomePage {...props} user={user} isLoading={isLoading} />} />
         <PrivateRoute path='/map' component={Map} lakes={lakes} />

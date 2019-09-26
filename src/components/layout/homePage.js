@@ -10,7 +10,7 @@ const StyledHomePageWrapper = styled.div`
   justify-content: center;
   background-color: #659dbd;
   transition: 200ms;
-  opacity: ${props => (props.isLoading ? 1 : 0)};
+  opacity: ${props => (props.isLoading ? 0 : 1)};
   section {
     display: flex;
     flex-direction: column;
@@ -67,7 +67,7 @@ const StyledHomePageWrapper = styled.div`
 `;
 
 const HomePage = ({ user, isLoading }) => (
-  <StyledHomePageWrapper isLoading={!isLoading}>
+  <StyledHomePageWrapper isLoading={isLoading}>
     <section>
       <span>
         <img src={logo} alt='Fish Friends logo' />
