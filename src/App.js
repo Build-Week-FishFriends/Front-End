@@ -40,7 +40,7 @@ function App() {
         <Route path='/map' render={props => <Map {...props} lakes={lakes} />} />
         <Route path='/login' render={props => <LoginForm {...props} handleUserObject={handleUserObject} />} />
         <Route path='/signup' render={props => <SignupForm {...props} handleUserObject={handleUserObject} />} />
-        <PrivateRoute path='/logsform' component={LogForm} />
+        <PrivateRoute path="/logsform/:id" render={props => <LogForm {...props} />} />
         <PrivateRoute path='/:username' component={UserProfile} user={user} />
       </Switch>
     </>
