@@ -8,15 +8,15 @@
 
 ## Dependencies
 
-`react` for user-interface state management
-`react-map-gl` for map ui and user location management
-`react-router` for in-app routing
-`axios` for api interactions
-`formik` for simpler form management
-`yup` for client-side form validation
-`styled-components` for custom styling
-`material-ui/core` for pre-built components
-`semantic-ui` for pre-built components
+- `react` for user-interface state management
+- `react-map-gl` for map ui and user location management
+- `react-router` for in-app routing
+- `axios` for api interactions
+- `formik` for simpler form management
+- `yup` for client-side form validation
+- `styled-components` for custom styling
+- `material-ui/core` for pre-built components
+- `semantic-ui` for pre-built components
 
 ## Production deploys and repo management
 
