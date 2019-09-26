@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { withFormik, Form, Field, setIn } from 'formik';
+import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import axiosWithAuth from './WithAuth';
 import { Label } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+
+import axiosWithAuth from './WithAuth';
 
 const BasicLoginForm = ({ values, errors, touched, status, history, handleUserObject }) => {
   const [inputType, setInputType] = useState('password');
@@ -76,7 +77,7 @@ const LoginForm = withFormik({
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.userObject));
       })
-      .catch(error => console.log('Error'));
+      .catch(error => console.log('Error', error));
   },
 })(BasicLoginForm);
 export default LoginForm;
