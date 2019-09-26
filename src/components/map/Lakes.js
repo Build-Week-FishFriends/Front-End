@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Marker } from 'react-map-gl';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import LakesCard from '../LakesCard';
-import { Route } from 'react-router-dom';
-import { Button, Header, Image, Modal } from 'semantic-ui-react';
-import PrivateRoute from '../../privateRoute';
-import pin from '../../assets/pin.svg';
+import { Modal } from 'semantic-ui-react';
 import styled from 'styled-components';
+
+import pin from '../../assets/pin.svg';
 
 const StyledMapLinkWrapper = styled.div`
   a {
@@ -30,7 +27,7 @@ const StyledMapLinkWrapper = styled.div`
 const Lakes = ({ zoom, lakes }) => {
   return (
     <div>
-      {lakes.map((lake, id) => {
+      {lakes.map(lake => {
         let facility;
         if (zoom < 8) {
           facility = (
