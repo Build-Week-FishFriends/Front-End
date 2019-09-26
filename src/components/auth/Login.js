@@ -9,7 +9,7 @@ const BasicLoginForm = ({ values, errors, touched, status, history, handleUserOb
   const [inputType, setInputType] = useState('password');
   useEffect(() => {
     status && handleUserObject(status.userObject);
-    status && history.push('/');
+    status && history.push('/map');
   });
   function hidePass() {
     if (inputType === 'password') {
@@ -42,7 +42,7 @@ const BasicLoginForm = ({ values, errors, touched, status, history, handleUserOb
                 Login
               </button>
               <p>Or</p>
-              <Link to='/signup' className='button'>
+              <Link to='/signup' className='link-button'>
                 Sign Up
               </Link>
             </div>

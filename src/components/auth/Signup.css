@@ -52,7 +52,7 @@
   align-items: center;
 }
 button,
-.button {
+.link-button {
   text-decoration: none;
   position: relative;
   display: block;
@@ -70,7 +70,7 @@ button,
 }
 
 button:hover,
-.button:hover {
+.link-button:hover {
   cursor: pointer;
   background: #bc986a;
 }
