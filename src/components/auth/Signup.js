@@ -6,16 +6,16 @@ import './Signup.css';
 import { Label } from 'semantic-ui-react';
 
 const BasicSignupForm = ({ values, errors, touched, status, history, handleUserObject }) => {
-  const [inputType, setInputType]= useState('password')
+  const [inputType, setInputType] = useState('password');
   useEffect(() => {
     status && handleUserObject(status.userObject);
-    status && history.push('/');
+    status && history.push('/map');
   });
-  function hidePass(){
-    if (inputType === 'password'){
-      setInputType('text')
-    }else{
-      setInputType('password')
+  function hidePass() {
+    if (inputType === 'password') {
+      setInputType('text');
+    } else {
+      setInputType('password');
     }
   }
   return (
@@ -41,11 +41,10 @@ const BasicSignupForm = ({ values, errors, touched, status, history, handleUserO
               placeholder='Confirm Password'
             />
             {touched.passconf && errors.passconf && <p>{errors.passconf}</p>}
-            <Label><Field
-              type="checkbox"
-              name="showPass"
-              onClick={()=> hidePass()}
-            />Show Password</Label>
+            <Label>
+              <Field type='checkbox' name='showPass' onClick={() => hidePass()} />
+              Show Password
+            </Label>
             <div>
               <button type='submit' value='Submit'>
                 Submit
