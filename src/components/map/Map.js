@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import ReactMapGL from 'react-map-gl';
+import styled from 'styled-components';
+
 import Lakes from './Lakes';
 import PrivateRoute from '../../privateRoute';
 import LakesCard from '../LakesCard';
-import styled from 'styled-components';
 
 const StyledMapWrapper = styled.div`
-  position: absolute;
-  top: 0px;
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
