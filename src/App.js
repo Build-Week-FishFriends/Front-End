@@ -12,6 +12,7 @@ import LogForm from './components/logs/LogForm';
 
 function App() {
   const [user, setUser] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     if (localStorage.getItem('user')) setUser(JSON.parse(localStorage.getItem('user')));
   }, []);
@@ -23,6 +24,7 @@ function App() {
       .get(`https://fish-friends.herokuapp.com/waterBodies`)
       .then(res => {
         setLakes(lakes => [...lakes, ...res.data]);
+        setIsLoading(isLoading => !isLoading);
       })
       .catch(err => {
         console.log(err);
@@ -36,7 +38,7 @@ function App() {
     <>
       <NavBar user={user} />
       <Switch>
-        <Route exact path='/' render={props => <HomePage {...props} user={user} />} />
+        <Route exact path='/' render={props => <HomePage {...props} user={user} isLoading={isLoading} />} />
         <Route path='/map' render={props => <Map {...props} lakes={lakes} />} />
         <Route path='/login' render={props => <LoginForm {...props} handleUserObject={handleUserObject} />} />
         <Route path='/signup' render={props => <SignupForm {...props} handleUserObject={handleUserObject} />} />

@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import map from "../../assets/map.svg";
-import profile from "../../assets/profile.svg";
-import { Label } from "semantic-ui-react";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import map from '../../assets/map.svg';
+import profile from '../../assets/profile.svg';
+import { Label } from 'semantic-ui-react';
 
 const StyledNavBar = styled.div`
   position: fixed;
@@ -12,9 +12,9 @@ const StyledNavBar = styled.div`
   width: 100%;
   z-index: 100;
   height: 65px;
-  background-color: #FBEEC1;
+  background-color: #fbeec1;
   box-shadow: 0px 0px 15px 0px black;
-  color:#123607;
+  color: #123607;
   font-family: 'Russo One', sans-serif;
   nav {
     height: 100%;
@@ -65,7 +65,9 @@ const NavBar = ({ user }) => {
           <img src={map} alt='map icon' />
         </Link>
         {navLinks}
-        <a className='signOut' onClick={()=> logout()}>Sign Out</a>
+        <a className='signOut' onClick={() => logout()}>
+          Sign Out
+        </a>
       </nav>
     </StyledNavBar>
   );

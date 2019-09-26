@@ -9,6 +9,8 @@ const StyledHomePageWrapper = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #659dbd;
+  transition: 200ms;
+  opacity: ${props => (props.isLoading ? 1 : 0)};
   section {
     display: flex;
     flex-direction: column;
@@ -64,27 +66,36 @@ const StyledHomePageWrapper = styled.div`
   }
 `;
 
-const HomePage = ({ user }) => (
-  <StyledHomePageWrapper>
-    <section>
-      <span>
-        <img src={logo} alt='Fish Friends logo' />
-      </span>
-      <h2>Fish Friends</h2>
-      <p>Discover, fish, and keep track of all your favorite fishing spots near you!</p>
-      {!user.userId && (
-        <div>
-          <Link to='/login'>Login</Link>
-          <Link to='/signup'>Signup</Link>
-        </div>
-      )}
-      {user.userId && (
-        <div>
-          <Link to='/map'>Discover Fishable Waters</Link>
-        </div>
-      )}
-    </section>
-  </StyledHomePageWrapper>
-);
+const HomePage = ({ user, isLoading }) => {
+  console.log('homepage');
+  let homeLinks;
+  if (!user.userId) {
+    homeLinks = (
+      <div>
+        <Link to='/login'>Login</Link>
+        <Link to='/signup'>Signup</Link>
+      </div>
+    );
+  } else {
+    homeLinks = (
+      <div>
+        <Link to='/map'>Discover Fishable Waters</Link>
+      </div>
+    );
+  }
+
+  return (
+    <StyledHomePageWrapper isLoading={!isLoading}>
+      <section>
+        <span>
+          <img src={logo} alt='Fish Friends logo' />
+        </span>
+        <h2>Fish Friends</h2>
+        <p>Discover, fish, and keep track of all your favorite fishing spots near you!</p>
+        {homeLinks}
+      </section>
+    </StyledHomePageWrapper>
+  );
+};
 
 export default HomePage;
