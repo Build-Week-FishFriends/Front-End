@@ -72,13 +72,21 @@ const HomePage = ({ user }) => (
       </span>
       <h2>Fish Friends</h2>
       <p>Discover, fish, and keep track of all your favorite fishing spots near you!</p>
+<<<<<<< HEAD
       {!user.userId && (
+=======
+      {!user && (
+>>>>>>>  conditionally renders homepage links based on user state
         <div>
           <Link to='/login'>Login</Link>
           <Link to='/signup'>Signup</Link>
         </div>
       )}
+<<<<<<< HEAD
       {user.userId && (
+=======
+      {user && (
+>>>>>>>  conditionally renders homepage links based on user state
         <div>
           <Link to='/map'>Discover Fishable Waters</Link>
         </div>
