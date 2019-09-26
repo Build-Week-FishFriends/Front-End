@@ -60,9 +60,7 @@ function LakesCard(props) {
       <button className="modal-close" onClick={() => props.history.goBack()}>
         <img src={back} alt="back button" />
       </button>
-
       <h2>{nowLake.facilityName}</h2>
-
       <section>
         <section>
           <h3>Directions</h3>

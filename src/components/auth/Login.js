@@ -1,29 +1,45 @@
-import React, { useEffect } from 'react';
-import { withFormik, Form, Field } from 'formik';
+import React, { useEffect, useState } from 'react';
+import { withFormik, Form, Field, setIn } from 'formik';
 import * as Yup from 'yup';
 import axiosWithAuth from './WithAuth';
+import { Label } from 'semantic-ui-react';
 
 const BasicLoginForm = ({ values, errors, touched, status, history, handleUserObject }) => {
+  const [inputType, setInputType]= useState('password')
   useEffect(() => {
     status && handleUserObject(status.userObject);
     status && history.push('/');
   });
+  function hidePass(){
+    if (inputType === 'password'){
+      setInputType('text')
+    }else{
+      setInputType('password')
+    }
+  }
   return (
-    <div className='background'>
-      <div className='FormContainer'>
-        <Form className='Form'>
-          <Field value={values.username} className='Fields' type='text' name='username' placeholder='Username/Email' />
-          {touched.username && errors.username && <p>{errors.username}</p>}
-          <Field value={values.pass} className='Fields' type='text' name='pass' placeholder='Password' />
-          {touched.pass && errors.pass && <p>{errors.pass}</p>}
-          <div className='buttoncontainer'>
-            <button type='submit' value='Submit'>
-              Login
-            </button>
-            <p>Or</p>
-            <button>Sign Up</button>
-          </div>
-        </Form>
+    <div className='html'>
+      <div className='background'>
+        <div className='FormContainer'>
+          <Form className='Form'>
+            <Field value={values.username} className='Fields' type='text' name='username' placeholder='Username/Email' />
+            {touched.username && errors.username && <p>{errors.username}</p>}
+            <Field value={values.pass} className='Fields' type={inputType} name='pass' placeholder='Password' />
+            {touched.pass && errors.pass && <p>{errors.pass}</p>}
+            <Label><Field
+              type="checkbox"
+              name="showPass"
+              onClick={()=> hidePass()}
+            />Show Password</Label>
+            <div className='buttoncontainer'>
+              <button type='submit' value='Submit'>
+                Login
+              </button>
+              <p>Or</p>
+              <button>Sign Up</button>
+            </div>
+          </Form>
+        </div>
       </div>
     </div>
   );
