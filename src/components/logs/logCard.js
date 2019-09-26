@@ -20,7 +20,7 @@ const StyledLogCard = styled.li`
 `;
 
 const LogCard = ({ handleDeleteLog, log }) => (
-  <StyledLogCard>
+  <StyledLogCard className="logprofile">
     <h3>{log.facilityName}</h3>
     <div>
       <p>

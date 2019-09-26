@@ -7,6 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Ubuntu', sans-serif;
+  background-color:  #659DBD;
 }
 
 code {
@@ -34,6 +35,8 @@ li {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .fields {
@@ -92,10 +95,18 @@ margin: 0 auto;
 	color-adjust: red;
 }
 
-.hBVqnq {
+.modalcard {
   width:500px;
   height: 500px;
 }
+
+.modalcard h1 {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+
 
 .logLink {
   font-size: 25px;
@@ -146,4 +157,23 @@ h3 {
 
 ul {
   border-bottom: 1px solid;
+}
+
+
+.logprofile {
+  background-color: #FBEEC0;
+}
+.userprof {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userprof h2 {
+  font-size: 50px;
+
+}
+
+.userprof h3 {
+  font-size: 30px;
 }

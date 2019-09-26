@@ -56,7 +56,7 @@ function LakesCard(props) {
   }, [id]);
 
   return (
-    <StyledModalWrapper>
+    <StyledModalWrapper className='modalcard'>
       <button className="modal-close" onClick={() => props.history.goBack()}>
         <img src={back} alt="back button" />
       </button>
