@@ -68,16 +68,14 @@ const LoginForm = withFormik({
   handleSubmit(values, { setStatus }) {
     const { username, pass } = values;
     const postValues = { username, password: pass };
-    console.log(postValues);
     axiosWithAuth()
       .post('/auth/login', postValues)
       .then(response => {
-        console.log(response);
         setStatus(response.data);
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.userObject));
       })
-      .catch(error => console.log('Error', error));
+      .catch(error => console.error('Error', error));
   },
 })(BasicLoginForm);
 export default LoginForm;
