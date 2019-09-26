@@ -43,12 +43,12 @@ const UserProfile = ({ user, match, history, location }) => {
   };
 
   return (
-    <section>
+    <section className='userprof'>
       <h2>
         Hello {user.firstName} {user.lastName}
       </h2>
       <section>
-        {logs.length > 0 && <h2>Your Logs</h2>}
+        {logs.length > 0 && <h3>Your Logs</h3>}
         <ul>
           {logs.map(log => (
             <LogCard key={log.log_id} handleDeleteLog={deleteLog} log={log} />
